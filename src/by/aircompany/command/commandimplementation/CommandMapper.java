@@ -13,7 +13,13 @@ public class CommandMapper {
 
     static {
         commandMap = new HashMap<>();
-        commandMap.put("ADD_AIRPLANE", new AddAirplaneCommand());
+        commandMap.put("ADD_AIRPLANE", new AddAirplane());
+        commandMap.put("REMOVE_AIRPLANE", new RemoveAirplane());
+        commandMap.put("SEARCH_AIRPLANES", new SearchAirplanes());
+        commandMap.put("SORT_AIRPLANES", new SortAirplanes());
+        commandMap.put("GET_ALL_AIRPLANES", new GetAllAirplanes());
+        commandMap.put("CALCULATE_TOTAL_CAPACITY", new CalculateTotalCapacity());
+        commandMap.put("CALCULATE_TOTAL_CARRYING_CAPACITY", new CalculateTotalCarryingCapacity());
     }
 
     public static Command getCommand(String commandName){

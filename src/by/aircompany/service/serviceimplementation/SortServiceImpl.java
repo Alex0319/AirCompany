@@ -2,20 +2,26 @@ package by.aircompany.service.serviceimplementation;
 
 import by.aircompany.beans.AbstractAirplane;
 import by.aircompany.beans.AirCompanyManager;
-import by.aircompany.enums.CompareCriteria;
-import by.aircompany.service.AirplanesComparator;
+import by.aircompany.enums.SortCompareCriteria;
+import by.aircompany.comparators.AirplanesComparator;
+import by.aircompany.service.SortService;
 
 /**
  * Created by user1 on 22.03.2017.
  */
-public class SortService {
+public class SortServiceImpl implements SortService{
     private AirplanesComparator airplanesComparator;
+    private AirCompanyManager airCompanyManager = AirCompanyManager.getInstance();
 
-    public SortService(CompareCriteria criteria){
+    public SortServiceImpl(SortCompareCriteria criteria){
         airplanesComparator = new AirplanesComparator(criteria);
     }
 
-    private void doSort(AirCompanyManager airCompanyManager,int minArrayIndex,int maxArrayIndex){
+    public void setAirplanesComparator(AirplanesComparator airplanesComparator) {
+        this.airplanesComparator = airplanesComparator;
+    }
+
+    private void doSort(int minArrayIndex,int maxArrayIndex){
         if (minArrayIndex > maxArrayIndex){
             return;
         }
@@ -39,14 +45,14 @@ public class SortService {
             }
         }
         if (i < maxArrayIndex) {
-            doSort(airCompanyManager, i, maxArrayIndex);
+            doSort(i, maxArrayIndex);
         }
         if (minArrayIndex < j){
-            doSort(airCompanyManager, minArrayIndex, j);
+            doSort(minArrayIndex, j);
         }
     }
 
-    public void sort(AirCompanyManager airCompanyManager){
-        doSort(airCompanyManager,0,airCompanyManager.getAirplanesCount() - 1);
+    public void sort(){
+        doSort(0,airCompanyManager.getAirplanesCount() - 1);
     }
 }
