@@ -11,7 +11,7 @@ public class AirCompanyRunner {
             InitializationManager.initialization();
             InitializationManager.getMenu();
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

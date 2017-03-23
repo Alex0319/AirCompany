@@ -1,9 +1,11 @@
 package by.aircompany.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by user1 on 21.03.2017.
  */
-public abstract class AbstractAirplane {
+public abstract class AbstractAirplane implements Serializable{
     protected String name,producer;
     protected float length;
     protected float wingspan;
@@ -19,20 +21,18 @@ public abstract class AbstractAirplane {
         super();
     }
 
-    public AbstractAirplane(String name,String producer,float length,float wingspan,float height,
-                            float range,float speed,float carrying,float flightAltitude,
-                            float capacity,float fuelConsumption){
-        this.name = name;
-        this.producer = producer;
-        this.length = length;
-        this.wingspan = wingspan;
-        this.height = height;
-        this.range = range;
-        this.speed = speed;
-        this.carrying = carrying;
-        this.flightAltitude = flightAltitude;
-        this.capacity = capacity;
-        this.fuelConsumption = fuelConsumption;
+    public AbstractAirplane(String[] airplanesParams){
+        this.name = airplanesParams[0];
+        this.producer = airplanesParams[1];
+        this.length = Float.parseFloat(airplanesParams[2]);
+        this.wingspan = Float.parseFloat(airplanesParams[3]);
+        this.height = Float.parseFloat(airplanesParams[4]);
+        this.range = Float.parseFloat(airplanesParams[5]);
+        this.speed = Float.parseFloat(airplanesParams[6]);
+        this.carrying = Float.parseFloat(airplanesParams[7]);
+        this.flightAltitude = Float.parseFloat(airplanesParams[8]);
+        this.capacity = Float.parseFloat(airplanesParams[9]);
+        this.fuelConsumption = Float.parseFloat(airplanesParams[10]);
     }
 
     public String getName() {
@@ -172,8 +172,8 @@ public abstract class AbstractAirplane {
     }
 
     private String checkStringValue(String str){
-        if(name != null){
-            return name;
+        if(str != null){
+            return str;
         }else{
             return "no";
         }
@@ -181,9 +181,9 @@ public abstract class AbstractAirplane {
 
     @Override
     public String toString() {
-        return "Name = " + checkStringValue(name) + ", producer = " + checkStringValue(producer) + ", length = " +
-                length + ", wingspan = " + wingspan + ", height = " + height + ", range = " + range + ", speed = " +
-                speed + ", carrying = " + carrying + ", flightAltitude = " + flightAltitude + ", capacity = " + capacity +
-                ", fuelConsumption = " + fuelConsumption;
+        return "Название = " + checkStringValue(name) + ", производитель = " + checkStringValue(producer) + ", длина = " +
+                length + ", размах крыльев = " + wingspan + ", высота = " + height + ", дальность полета = " + range +
+                ", скорость = " + speed + ", грузоподъемность = " + carrying + ", высота полета = " + flightAltitude +
+                ", вместимость = " + capacity + ", потребление горючего = " + fuelConsumption;
     }
 }

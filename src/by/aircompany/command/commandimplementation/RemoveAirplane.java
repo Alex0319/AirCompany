@@ -15,7 +15,7 @@ public class RemoveAirplane implements Command {
     @Override
     public String execute(String request){
         String[] requestParams = request.split("&");
-        AirCompanyManager.getInstance().removeAirplane(Integer.parseInt(requestParams[1]));
+        AirCompanyManager.getInstance().removeAirplane(Integer.parseInt(requestParams[1]) - 1);
         return null;
     }
 }

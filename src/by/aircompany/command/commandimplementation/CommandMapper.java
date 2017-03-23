@@ -20,6 +20,8 @@ public class CommandMapper {
         commandMap.put("GET_ALL_AIRPLANES", new GetAllAirplanes());
         commandMap.put("CALCULATE_TOTAL_CAPACITY", new CalculateTotalCapacity());
         commandMap.put("CALCULATE_TOTAL_CARRYING_CAPACITY", new CalculateTotalCarryingCapacity());
+        commandMap.put("LOAD_AIRPLANES", new LoadAirplanes());
+        commandMap.put("SAVE_AIRPLANES", new SaveAirplanes());
     }
 
     public static Command getCommand(String commandName){
