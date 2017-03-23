@@ -123,9 +123,9 @@ public class InitializationManager {
     private static int showMenuOfCriteriaAndGetCriteria(String[] criteriaMenuItems){
         int inputValue;
         printMenu(criteriaMenuItems);
-        while ((inputValue = Operations.inputNumber(null)) > criteriaMenuItems.length + 1){
-            printMenu(criteriaMenuItems);
+        while ((inputValue = Operations.inputNumber(null)) > criteriaMenuItems.length){
             System.out.println("Неверный выбор либо формат. Повторите...");
+            printMenu(criteriaMenuItems);
         }
         return inputValue;
     }
