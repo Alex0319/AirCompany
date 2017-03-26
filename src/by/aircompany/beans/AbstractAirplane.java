@@ -7,32 +7,34 @@ import java.io.Serializable;
  */
 public abstract class AbstractAirplane implements Serializable{
     protected String name,producer;
-    protected float length;
-    protected float wingspan;
-    protected float height;
-    protected float range;
-    protected float speed;
-    protected float carrying;
-    protected float flightAltitude;
-    protected float capacity;
-    protected float fuelConsumption;
+
+
+    protected int length;
+    protected int wingspan;
+    protected int height;
+    protected int range;
+    protected int speed;
+    protected int carrying;
+    protected int flightAltitude;
+    protected int capacity;
+    protected int fuelConsumption;
 
     public AbstractAirplane(){
         super();
     }
 
-    public AbstractAirplane(String[] airplanesParams){
-        this.name = airplanesParams[0];
-        this.producer = airplanesParams[1];
-        this.length = Float.parseFloat(airplanesParams[2]);
-        this.wingspan = Float.parseFloat(airplanesParams[3]);
-        this.height = Float.parseFloat(airplanesParams[4]);
-        this.range = Float.parseFloat(airplanesParams[5]);
-        this.speed = Float.parseFloat(airplanesParams[6]);
-        this.carrying = Float.parseFloat(airplanesParams[7]);
-        this.flightAltitude = Float.parseFloat(airplanesParams[8]);
-        this.capacity = Float.parseFloat(airplanesParams[9]);
-        this.fuelConsumption = Float.parseFloat(airplanesParams[10]);
+    public AbstractAirplane(String name, String producer, int length, int wingspan, int height, int range, int speed, int carrying, int flightAltitude, int capacity, int fuelConsumption) {
+        this.name = name;
+        this.producer = producer;
+        this.length = length;
+        this.wingspan = wingspan;
+        this.height = height;
+        this.range = range;
+        this.speed = speed;
+        this.carrying = carrying;
+        this.flightAltitude = flightAltitude;
+        this.capacity = capacity;
+        this.fuelConsumption = fuelConsumption;
     }
 
     public String getName() {
@@ -51,75 +53,75 @@ public abstract class AbstractAirplane implements Serializable{
         this.producer = producer;
     }
 
-    public float getLength() {
+    public int getLength() {
         return length;
     }
 
-    public void setLength(float length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
-    public float getWingspan() {
+    public int getWingspan() {
         return wingspan;
     }
 
-    public void setWingspan(float wingspan) {
+    public void setWingspan(int wingspan) {
         this.wingspan = wingspan;
     }
 
-    public float getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public float getRange() {
+    public int getRange() {
         return range;
     }
 
-    public void setRange(float range) {
+    public void setRange(int range) {
         this.range = range;
     }
 
-    public float getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(float speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
-    public float getCarrying() {
+    public int getCarrying() {
         return carrying;
     }
 
-    public void setCarrying(float carrying) {
+    public void setCarrying(int carrying) {
         this.carrying = carrying;
     }
 
-    public float getFlightAltitude() {
+    public int getFlightAltitude() {
         return flightAltitude;
     }
 
-    public void setFlightAltitude(float flightAltitude) {
+    public void setFlightAltitude(int flightAltitude) {
         this.flightAltitude = flightAltitude;
     }
 
-    public float getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(float capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public float getFuelConsumption() {
+    public int getFuelConsumption() {
         return fuelConsumption;
     }
 
-    public void setFuelConsumption(float fuelConsumption) {
+    public void setFuelConsumption(int fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
 
@@ -185,5 +187,11 @@ public abstract class AbstractAirplane implements Serializable{
                 length + ", размах крыльев = " + wingspan + ", высота = " + height + ", дальность полета = " + range +
                 ", скорость = " + speed + ", грузоподъемность = " + carrying + ", высота полета = " + flightAltitude +
                 ", вместимость = " + capacity + ", потребление горючего = " + fuelConsumption;
+    }
+
+    public String toXmlString(){
+        return  "name=" + name + ", producer=" + producer + ", length=" + length + ", wingspan=" + wingspan +
+                ", height=" + height + ", range=" + range + ", speed=" + speed + ", carrying=" + carrying +
+                ", flightAltitude=" + flightAltitude + ", capacity=" + capacity + ", fuelConsumption=" + fuelConsumption;
     }
 }

@@ -10,10 +10,11 @@ public class CargoAirplane extends AbstractAirplane {
         super();
     }
 
-    public CargoAirplane(String[] airplanesParams) {
-        super(airplanesParams);
-        this.maxLoad = Integer.parseInt(airplanesParams[airplanesParams.length-2]);
-        this.maxVolume = Integer.parseInt(airplanesParams[airplanesParams.length-1]);;
+    public CargoAirplane(String name, String producer, int length, int wingspan, int height, int range, int speed,
+                         int carrying, int flightAltitude, int capacity, int fuelConsumption, int maxLoad, int maxVolume) {
+        super(name, producer, length, wingspan, height, range, speed, carrying, flightAltitude, capacity, fuelConsumption);
+        this.maxLoad = maxLoad;
+        this.maxVolume = maxVolume;
     }
 
     public int getMaxLoad() {
@@ -56,5 +57,10 @@ public class CargoAirplane extends AbstractAirplane {
     public String toString() {
         return "Тип: Грузовой самолет, " + super.toString() +
                 ", максимальная загруженность = " + maxLoad + ", максимальный объем = " + maxVolume;
+    }
+
+    @Override
+    public String toXmlString() {
+        return "type=CARGO, " + super.toXmlString() + ", maxLoad=" + maxLoad + ", maxVolume=" + maxVolume;
     }
 }

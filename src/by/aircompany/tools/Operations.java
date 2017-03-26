@@ -9,62 +9,45 @@ import java.util.Scanner;
  * Created by user1 on 22.03.2017.
  */
 public class Operations {
-    public static Scanner input = new Scanner(System.in);
 
     public static int inputNumber(String paramName){
-        int number = -1;
+        int number = 0;
+        Scanner input;
         while(number <= 0){
             try {
                 if(paramName != null){
                     System.out.print(paramName + ": ");
                 }
                 input = new Scanner(System.in);
-                number = input.nextInt();
-                if(number > 0){
-                    return number;
+                if(input.hasNext()){
+                    number = input.nextInt();
                 }
-                else{
+                if(number <= 0){
                     System.out.println("Параметр не может быть отрицательным. Повторите ввод...");
                 }
-            }
-            catch (InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Неверный формат. Повторите ввод...");
             }
         }
-        return 0;
-    }
-
-    public static float inputFloatNumber(String paramName){
-        float number = -1;
-        while(number <= 0){
-            try {
-                if(paramName != null){
-                    System.out.print(paramName + ": ");
-                }
-                input = new Scanner(System.in);
-                number = input.nextFloat();
-                if(number > 0){
-                    return number;
-                }
-                else{
-                    System.out.println("Параметр \"" + paramName + "\" не может быть отрицательным. Повторите ввод...");
-                }
-            }
-            catch (InputMismatchException e) {
-                System.out.println("Неверный формат. Повторите ввод...");
-            }
-        }
-        return 0;
+        return number;
     }
 
     public static String inputString(String paramName){
-        String inputString;
+        String inputString = null;
+        Scanner input;
         if(paramName != null){
             System.out.print(paramName + ": ");
         }
-        while ((inputString = input.next()).isEmpty()){
-            System.out.println("Параметр " + paramName + " не может быть пустым");
-        }
+        do{
+            try {
+                input = new Scanner(System.in);
+                if((input.hasNext()) && ((inputString = input.next()).isEmpty())){
+                    System.out.println("Параметр " + paramName + " не может быть пустым");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Неверный формат. Повторите ввод...");
+            }
+        }while (inputString.isEmpty());
         return inputString;
     }
 
@@ -72,7 +55,6 @@ public class Operations {
         final ArrayList<String> generalAirplanesParams = new ArrayList<>(Arrays.asList(new String[] { "Название",
                 "Производитель", "Длина", "Размах крыльев", "Высота", "Дальность полета", "Скорость",
                 "Грузоподъемность", "Высота полета", "Вместимость", "Расход топлива"}));
-        final int generalAirplanesParamsCount = generalAirplanesParams.size();
         StringBuilder inputAirplaneParams = new StringBuilder();
         if (airplaneType == 1){
             generalAirplanesParams.add("Количество пассажирских мест");
@@ -84,8 +66,6 @@ public class Operations {
             inputAirplaneParams.append('&');
             if (i < 2){
                 inputAirplaneParams.append(inputString(generalAirplanesParams.get(i)));
-            }else if(i < generalAirplanesParamsCount){
-                inputAirplaneParams.append(Float.toString(inputFloatNumber(generalAirplanesParams.get(i))));
             }else {
                 inputAirplaneParams.append(Integer.toString(inputNumber(generalAirplanesParams.get(i))));
             }

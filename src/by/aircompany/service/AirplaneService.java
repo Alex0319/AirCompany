@@ -1,7 +1,5 @@
 package by.aircompany.service;
 
-import by.aircompany.beans.AirCompanyManager;
-
 import java.math.BigDecimal;
 
 /**

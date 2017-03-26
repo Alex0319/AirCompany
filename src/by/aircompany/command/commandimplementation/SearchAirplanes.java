@@ -33,7 +33,7 @@ public class SearchAirplanes implements Command {
         if(stringBuilder.length() == 0){
             return "Самолеты в заданном диапазоне не найдены";
         }else{
-            return stringBuilder.insert(0,"Найденные самолеты:\n").toString();
+            return stringBuilder.insert(0,"Найденные самолеты:").toString();
         }
     }
 }

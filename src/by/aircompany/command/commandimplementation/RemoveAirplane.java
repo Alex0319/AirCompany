@@ -14,8 +14,14 @@ import java.util.Arrays;
 public class RemoveAirplane implements Command {
     @Override
     public String execute(String request){
+        AirCompanyManager airCompanyManager = AirCompanyManager.getInstance();
         String[] requestParams = request.split("&");
-        AirCompanyManager.getInstance().removeAirplane(Integer.parseInt(requestParams[1]) - 1);
-        return null;
+        int airplaneNumber = Integer.parseInt(requestParams[1]) - 1;
+        if(airplaneNumber < airCompanyManager.getAirplanesCount()){
+            airCompanyManager.removeAirplane(airplaneNumber);
+        }else{
+            return "Самолет с номером " + (airplaneNumber + 1) + " не найден" ;
+        }
+        return "Самолет успешно удален";
     }
 }

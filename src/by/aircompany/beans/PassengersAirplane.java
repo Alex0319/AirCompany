@@ -1,7 +1,5 @@
 package by.aircompany.beans;
 
-import java.util.Arrays;
-
 /**
  * Created by user1 on 21.03.2017.
  */
@@ -12,9 +10,11 @@ public class PassengersAirplane extends AbstractAirplane {
         super();
     }
 
-    public PassengersAirplane(String[] airplanesParams) {
-        super(airplanesParams);
-        this.passengersCount = Integer.parseInt(airplanesParams[airplanesParams.length-1]);
+    public PassengersAirplane(String name, String producer, int length, int wingspan, int height, int range,
+                              int speed, int carrying, int flightAltitude, int capacity, int fuelConsumption,
+                              int passengersCount) {
+        super(name, producer, length, wingspan, height, range, speed, carrying, flightAltitude, capacity, fuelConsumption);
+        this.passengersCount = passengersCount;
     }
 
     public int getPassengersCount() {
@@ -45,7 +45,11 @@ public class PassengersAirplane extends AbstractAirplane {
 
     @Override
     public String toString() {
-        return "Тип: Пассажирский самолет, " + super.toString() +
-                ", количество пассажиров = " + passengersCount;
+        return "Тип: Пассажирский самолет, " + super.toString() + ", количество пассажиров = " + passengersCount;
+    }
+
+    @Override
+    public String toXmlString() {
+        return "type=PASSENGERS, " + super.toXmlString() + ", passengersCount=" + passengersCount;
     }
 }

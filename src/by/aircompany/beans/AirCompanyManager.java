@@ -1,6 +1,7 @@
 package by.aircompany.beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user1 on 22.03.2017.
@@ -22,7 +23,7 @@ public class AirCompanyManager {
         airplanes.add(airplane);
     }
 
-    public void addRange(ArrayList<AbstractAirplane> airplanes){
+    public void addRange(List<AbstractAirplane> airplanes){
         if(airplanes != null){
             this.airplanes.addAll(airplanes);
         }

@@ -62,8 +62,8 @@ public class InitializationManager {
                 }break;
                 case 2: {
                     System.out.println(Controller.doAction("SEARCH_AIRPLANES&" + showMenuOfCriteriaAndGetCriteria(searchParams)
-                            + "&" + Operations.inputFloatNumber("Начало диапазона")
-                            + "&" + Operations.inputFloatNumber("Конец диапазона")));
+                            + "&" + Operations.inputNumber("Начало диапазона")
+                            + "&" + Operations.inputNumber("Конец диапазона")));
                 }break;
                 case 3: {
                     System.out.println(Controller.doAction("SORT_AIRPLANES&" + showMenuOfCriteriaAndGetCriteria(sortParams)));
@@ -84,12 +84,12 @@ public class InitializationManager {
             printMenu(adminMenuItems);
             switch (Operations.inputNumber(null)){
                 case 1: {
-                    System.out.print(Controller.doAction("GET_ALL_AIRPLANES"));
+                    System.out.println(Controller.doAction("GET_ALL_AIRPLANES"));
                 }break;
                 case 2: {
                     System.out.println(Controller.doAction("SEARCH_AIRPLANES&" + showMenuOfCriteriaAndGetCriteria(searchParams)
-                            + "&" + Operations.inputFloatNumber("Начало диапазона")
-                            + "&" + Operations.inputFloatNumber("Конец диапазона")));
+                            + "&" + Operations.inputNumber("Начало диапазона")
+                            + "&" + Operations.inputNumber("Конец диапазона")));
                 }break;
                 case 3: {
                     System.out.println(Controller.doAction("SORT_AIRPLANES&" + showMenuOfCriteriaAndGetCriteria(sortParams)));
@@ -99,7 +99,7 @@ public class InitializationManager {
                     Controller.doAction("ADD_AIRPLANE&" + inputValue + Operations.inputAirplaneParameters(inputValue));
                 }break;
                 case 5: {
-                    Controller.doAction("REMOVE_AIRPLANE&" + Operations.inputNumber("Номер самолета"));
+                    System.out.println(Controller.doAction("REMOVE_AIRPLANE&" + Operations.inputNumber("Номер самолета")));
                 }break;
                 case 6: {
                     System.out.println(Controller.doAction("SAVE_AIRPLANES"));

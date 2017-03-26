@@ -1,25 +1,25 @@
 package by.aircompany.airplanesfactory.factoriesimplementations;
 
 import by.aircompany.airplanesfactory.AirplanesFactory;
-import by.aircompany.command.commandimplementation.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by user1 on 22.03.2017.
  */
 public class FactoryMapper {
-    private static ArrayList<AirplanesFactory> factories;
+    private static Map<String,AirplanesFactory> factories;
 
     static {
-        factories = new ArrayList<>();
-        factories.add(new PassengersAirplanesFactory());
-        factories.add(new CargoAirplanesFactories());
+        factories = new LinkedHashMap<>();
+        factories.put("PASSENGERS_AIRPLANE_FACTORY",new PassengersAirplanesFactory());
+        factories.put("CARGO_AIRPLANE_FACTORY",new CargoAirplanesFactories());
     }
 
     public static AirplanesFactory getFactory(int index){
-        return factories.get(index);
+        return new ArrayList<>(factories.values()).get(index);
+    }
+
+    public static AirplanesFactory getFactory(String name){
+        return factories.get(name);
     }
 }
